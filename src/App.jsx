@@ -7,6 +7,38 @@ import styles from './App.module.css';
 
 export function App() {
 
+  const posts = [
+    {
+      id: 1,
+      author: {
+        avatarUrl: 'https://github.com/GuiAlcantaraa.png',
+        name: 'Guilherme Alcantara',
+        role: 'Desenvolvedor de Sistemas'
+      },
+      content: [
+        { type: 'paragraph', content: 'Fala galera 😎', },
+        { type: 'paragraph', content: 'Desenvolvendo uma rede social na nova trilha de React' },
+        { type: 'link', content: 'github.com/GuiAlcantaraa' }
+      ],
+      publishedAt: new Date('2022-10-25 10:22:00')
+    },
+    {
+      id: 2,
+      author: {
+        avatarUrl: 'https://github.com/diego3g.png',
+        name: 'Diego Fernandes',
+        role: 'Web Developer'
+      },
+      content: [
+        { type: 'paragraph', content: 'Fala galera 😎', },
+        { type: 'paragraph', content: 'Desenvolvendo uma rede social na nova trilha de React' },
+        { type: 'link', content: 'github.com/GuiAlcantaraa' }
+      ],
+      publishedAt: new Date('2022-10-25 10:22:00')
+    },
+  ];
+
+
   return (
     <div>
       <Header />
@@ -17,18 +49,18 @@ export function App() {
         <Sidebar />
 
         <main>
-
-          <Post
-            author="Guilherme alcantara"
-            content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, totam laboriosam! Hic delectus omnis officiis culpa velit animi incidunt expedita veritatis consequuntur. Modi accusamus soluta eveniet. Impedit saepe perferendis odit."
-          />
-
-          <Post
-            author="Guilherme alcantara"
-            content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, totam laboriosam! Hic delectus omnis officiis culpa velit animi incidunt expedita veritatis consequuntur. Modi accusamus soluta eveniet. Impedit saepe perferendis odit."
-          />
-
+          {posts.map(post => {
+            return (
+              <Post
+                key={post.id}
+                author={post.author}
+                content={post.content}
+                publishedAt={post.publishedAt}
+              />
+            )
+          })}
         </main>
+
       </div>
     </div>
   )
